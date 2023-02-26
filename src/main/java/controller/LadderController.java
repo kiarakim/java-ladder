@@ -28,8 +28,8 @@ public class LadderController {
 
 	public void init() {
 		repeat(() -> people = People.from(inputView.readNames()));
-		repeat(() -> results = Results.from(inputView.readRewards()));
-		repeat(() -> ladder = Ladder.from(inputView.readHeight(), people.size()));
+		repeat(() -> results = Results.from(inputView.readRewards(), people.size()));
+		repeat(() -> ladder = Ladder.of(inputView.readHeight(), people.size()));
 	}
 
 	public void showLadder() {

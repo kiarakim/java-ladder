@@ -12,7 +12,7 @@ public class Ladder {
 		this.levels = levels;
 	}
 
-	public static Ladder from(int height, int participantSize) {
+	public static Ladder of(int height, int participantSize) {
 		validate(height);
 
 		List<Level> levelList = new ArrayList<>();
