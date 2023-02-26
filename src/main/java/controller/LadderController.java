@@ -40,8 +40,8 @@ public class LadderController {
 		Map<String, String> resultTable = new HashMap<>();
 
 		for (int position = 0; position < people.size(); position++) {
-			int newPosition = ladder.start(position);
-			resultTable.put(people.getNames().get(position), results.getResult(newPosition));
+			int end = ladder.findEnd(position);
+			resultTable.put(people.getNames().get(position), results.getResult(end));
 		}
 		askWanted(resultTable);
 	}

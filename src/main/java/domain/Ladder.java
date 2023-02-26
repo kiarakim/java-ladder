@@ -32,7 +32,7 @@ public class Ladder {
 		}
 	}
 
-	public int start(int position) {
+	public int findEnd(int position) {
 		for (Level thisLevel : levels) {
 			if (position - 1 >= FIRST_COLUMN && thisLevel.isStoolExist(position - 1)) {
 				position--;
