@@ -16,12 +16,12 @@ public class Results {
 	public static Results from(List<String> rewards, int personsSize) {
 		peopleSize = personsSize;
 		validateSize(rewards);
-		List<Result> resultList = new ArrayList<>();
+		List<Result> eachResult = new ArrayList<>();
 		for (String reward : rewards) {
-			resultList.add(new Result(reward));
+			eachResult.add(new Result(reward));
 		}
 
-		return new Results(resultList);
+		return new Results(eachResult);
 	}
 
 	private static void validateSize(List<String> rewards) {
