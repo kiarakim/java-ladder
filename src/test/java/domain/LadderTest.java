@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 @DisplayName("사다리는 ")
 class LadderTest {
 	public static Ladder initLadder(int height, int participantSize) {
-		return Ladder.from(height, participantSize);
+		return Ladder.of(height, participantSize);
 	}
 
 	@DisplayName("1 이상 100 이하의 높이만 가능하다")
@@ -26,7 +26,7 @@ class LadderTest {
 	@ParameterizedTest
 	@ValueSource(ints = {-2, 101})
 	void heightNot1_100(int height) {
-		assertThatThrownBy(() -> Ladder.from(height, 5))
+		assertThatThrownBy(() -> Ladder.of(height, 5))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("[ERROR] 높이는 1부터 100까지만 가능합니다");
 	}
