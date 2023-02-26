@@ -14,8 +14,11 @@ class ResultsTest {
 	@DisplayName("개수는 참여자의 수와 같아야 한다")
 	@Test
 	void resultSameAsPeopleSize() {
-		People people = People.from(List.of("salmn", "kiara"));
-		Results results = Results.from(List.of("꽝", "5000"));
+		int peopleSize = 2;
+		Results results = Results.from(List.of("꽝", "5000"), peopleSize);
+
+		assertThat(results.size()).isEqualTo(peopleSize);
+	}
 
 		assertThat(results.size()).isEqualTo(people.size());
 	}
@@ -23,9 +26,9 @@ class ResultsTest {
 	@DisplayName("2개 미만이면 예외가 발생한다")
 	@Test
 	void resultsSize1() {
-		assertThatThrownBy(() -> Results.from(List.of("3000")))
+		assertThatThrownBy(() -> Results.from(List.of("3000"), 1))
 			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("[ERROR] 예상 결과 개수는 2 ~ 10개여야 합니다증");
+			.hasMessage("[ERROR] 예상 결과 개수는 2 ~ 10개여야 합니다");
 	}
 
 	@DisplayName("10개 초과면 예외가 발생한다")
@@ -35,7 +38,7 @@ class ResultsTest {
 			.mapToObj(i -> "당첨" + i)
 			.collect(Collectors.toList());
 
-		assertThatThrownBy(() -> Results.from(sequences))
+		assertThatThrownBy(() -> Results.from(sequences, 11))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("[ERROR] 예상 결과 개수는 2 ~ 10개여야 합니다");
 	}
