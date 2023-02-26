@@ -15,7 +15,7 @@ class ResultTest {
 		String sequence = "꽝";
 		Result result = new Result(sequence);
 
-		assertThat(result.getSequence().trim()).hasSizeBetween(1, 5);
+		assertThat(result.getReward().trim()).hasSizeBetween(1, 5);
 	}
 
 	@DisplayName("앞뒤 공백을 제외하고 1 ~ 5글자가 아니면 예외가 발생한다")
