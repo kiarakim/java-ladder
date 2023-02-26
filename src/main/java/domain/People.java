@@ -29,9 +29,9 @@ public class People {
 		int MIN_SIZE = 2;
 		int MAX_SIZE = 10;
 		if (names.size() < MIN_SIZE)
-			throw new IllegalArgumentException(String.format("참여 인원은 %d ~ %d명이어야 합니다", MIN_SIZE, MAX_SIZE));
+			throw new IllegalArgumentException(String.format("[ERROR] 참여 인원은 %d ~ %d명이어야 합니다", MIN_SIZE, MAX_SIZE));
 		if (names.size() > MAX_SIZE)
-			throw new IllegalArgumentException(String.format("참여 인원은 %d ~ %d명이어야 합니다", MIN_SIZE, MAX_SIZE));
+			throw new IllegalArgumentException(String.format("[ERROR] 참여 인원은 %d ~ %d명이어야 합니다", MIN_SIZE, MAX_SIZE));
 	}
 
 	private static void validateDuplication(List<String> names) {
@@ -40,7 +40,7 @@ public class People {
 			.distinct()
 			.count();
 		if (distinctCount != names.size())
-			throw new IllegalArgumentException("사람 이름은 중복되지 않아야 합니다");
+			throw new IllegalArgumentException("[ERROR] 사람 이름은 중복되지 않아야 합니다");
 	}
 
 	public List<String> getNames() {
@@ -52,7 +52,7 @@ public class People {
 	public void checkExistence(String sequence) {
 		boolean isExist = getNames().contains(sequence);
 		if (!isExist) {
-			throw new IllegalArgumentException("대상은 참여자에 존재하지 않습니다");
+			throw new IllegalArgumentException("[ERROR] 대상은 참여자에 존재하지 않습니다");
 		}
 	}
 

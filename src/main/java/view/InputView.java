@@ -3,8 +3,6 @@ package view;
 import java.util.List;
 import java.util.Scanner;
 
-import exception.Error;
-
 public class InputView {
 	private final Scanner scanner = new Scanner(System.in);
 
@@ -23,7 +21,7 @@ public class InputView {
 			System.out.println("\n최대 사다리 높이는 몇 개인가요?");
 			return Integer.parseInt(scanner.nextLine());
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException(Error.HEIGHT_ONLY_NUMBER.getMessage());
+			throw new IllegalArgumentException("[ERROR] 높이는 숫자를 입력해야 합니다");
 		}
 	}
 

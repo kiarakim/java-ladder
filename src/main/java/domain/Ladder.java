@@ -25,10 +25,10 @@ public class Ladder {
 
 	private static void validate(int height) {
 		int MIN_HEIGHT = 1;
-		int MAX_HEIGHT = 1;
+		int MAX_HEIGHT = 100;
 
 		if (height < MIN_HEIGHT || height > MAX_HEIGHT) {
-			throw new IllegalArgumentException(String.format("높이는 %d부터 %d까지만 가능합니다", MIN_HEIGHT, MAX_HEIGHT));
+			throw new IllegalArgumentException(String.format("[ERROR] 가높이는 %d부터 %d까지만 가능합니다", MIN_HEIGHT, MAX_HEIGHT));
 		}
 	}
 
