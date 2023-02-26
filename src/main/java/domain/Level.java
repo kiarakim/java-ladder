@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Level {
 	private static final Random random = new Random();
-	public static final int PREVIOUS_STOOL = 1;
+	private static final int PREVIOUS_STOOL = 1;
 
 	private final List<Stool> level;
 
