@@ -8,6 +8,8 @@ import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("사람들은 ")
 class PeopleTest {
@@ -45,5 +47,16 @@ class PeopleTest {
 		assertThatThrownBy(() -> People.from(List.of("kiara", "kiara")))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("[ERROR] 사람 이름은 중복되지 않아야 합니다");
+	}
+
+	@DisplayName("참여자 외의 다른 이름을 검색하면 예외가 발생한다.")
+	@ParameterizedTest
+	@ValueSource(strings = {"me", "you", "guys"})
+	void searchInParticipants(String target) {
+		People people = People.from(List.of("salmn", "kiara"));
+
+		assertThatThrownBy(() -> people.checkExistence(target))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessage("[ERROR] 대상은 참여자에 존재하지 않습니다");
 	}
 }
