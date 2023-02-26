@@ -20,7 +20,15 @@ class ResultsTest {
 		assertThat(results.size()).isEqualTo(peopleSize);
 	}
 
-		assertThat(results.size()).isEqualTo(people.size());
+	@DisplayName("개수가 참여자의 수와 다르면 예외가 발생한다")
+	@Test
+	void resultSize_ShouldMatchPeopleSize() {
+		int peopleSize = 2;
+
+		assertThatThrownBy(() ->
+			Results.from(List.of("꽝", "5000", "다음"), peopleSize))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessage("[ERROR] 참여자의 수와 결과는 같아야 합니다");
 	}
 
 	@DisplayName("2개 미만이면 예외가 발생한다")
